@@ -1,0 +1,29 @@
+<h1>Contacts</h1>
+
+<form class="" action="/contacts/search" method="get">
+  <label for="Box" />
+  <input type="text" name="Box" id="search"/>
+  <input type="submit" value="Search" />
+</form>
+<ul>
+  <% @contacts.each do |contact| %>
+    <li><%= contact.name %> - <%= contact.phone_number %></li>
+  <% end %>
+</ul>
+<% if @query.nil? %>
+  <a href="/contacts?page=<%= @page_no - 1 %>"><- Previos</a> | <a href="/contacts?page=<%= @page_no + 1 %>"> Next -> </a>
+<% end %>
+
+<fieldset>
+  <legend>Add Item</legend>
+  <form method="post" action="/contacts">
+    <label for="first_name">First name</label>
+    <input type="text" name="first_name" id="first_name" />
+    <label for="first_name">Last name</label>
+    <input type="text" name="last_name" id="last_name" />
+    <label for="number">Phone:</label>
+    <input type="text" name="phone_number" id="phone_number" />
+
+    <input type="submit" value="Submit" />
+  </form>
+</fieldset>
